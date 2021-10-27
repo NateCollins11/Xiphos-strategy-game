@@ -1730,7 +1730,7 @@ Material:
     - _GlowOuter: 0.05
     - _GlowPower: 0.75
     - _GradientScale: 10
-    - _LightAngle: -1.6003914
+    - _LightAngle: -0.85853845
     - _MaskSoftnessX: 0
     - _MaskSoftnessY: 0
     - _OutlineSoftness: 0
@@ -1746,7 +1746,7 @@ Material:
     - _ScaleY: 1
     - _ShaderFlags: 0
     - _Sharpness: 0
-    - _SpecularPower: 3.0432696
+    - _SpecularPower: 2.3092136
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0
