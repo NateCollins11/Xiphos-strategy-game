@@ -24,6 +24,8 @@ public class Attack
 
     public bool isHeal;
 
+    public string tooltipText;
+
     public List<(int x, int y)> pattern;
 
     public bool hoverSelectionOn = false;
@@ -36,7 +38,7 @@ public class Attack
 
     }
 
-    public Attack(GameObject BoardObjectarg, bool isEnemyarg, string name, int damageargument, float rangeargument, List<string> modifiersarg, string damageTypearg, string typeOfAttackargument, float AOERadiusArgument = 0, List<(int x, int y)> patternArg = null, bool isHealarg = false)
+    public Attack(GameObject BoardObjectarg, bool isEnemyarg, string name, int damageargument, float rangeargument, List<string> modifiersarg, string damageTypearg, string typeOfAttackargument, float AOERadiusArgument = 0, List<(int x, int y)> patternArg = null, bool isHealarg = false, string tooltip = "No Tooltip")
     {
         attackName = name;
         isEnemy = isEnemyarg;
@@ -49,6 +51,7 @@ public class Attack
         AOERadius = AOERadiusArgument;
         pattern = patternArg;
         isHeal = isHealarg;
+        tooltipText = tooltip;
 
     }
     public List<(int x, int y, bool enemypresent)> DetermineAttackTiles(int xPos, int yPos)

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CharacterInfoPanel : MonoBehaviour
 {
-
+    public Tooltip tooltipObject;
 
     public GameObject Board;
     // Start is called before the first frame update
@@ -25,36 +25,50 @@ public class CharacterInfoPanel : MonoBehaviour
 
 
 
-    public void UpdateInformation(string unitType, string unitName, int maxHP, int currentHP, int movementRemaining, string attack1Name, string attack2Name, string attack3Name)
+    public void UpdateInformation(string unitType, string unitName, int maxHP, int currentHP, int movementRemaining, Attack attack1, Attack attack2, Attack attack3)
     {
         gameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = unitName;
         gameObject.transform.GetChild(2).GetComponent<TMPro.TextMeshProUGUI>().text = " " + currentHP + "/" + maxHP;
 
 
-        if (attack1Name != null)
+        if (attack1 != null)
         {
             gameObject.transform.GetChild(5).gameObject.SetActive(true);
-            gameObject.transform.GetChild(5).GetChild(0).GetComponent<Text>().text = attack1Name;
-        }
+            gameObject.transform.GetChild(5).GetChild(0).GetComponent<Text>().text = attack1.attackName;
+            TooltipComponent tooltip = gameObject.transform.GetChild(5).gameObject.GetComponent<TooltipComponent>();
+            tooltip.enabled = true;
+            tooltip.tooltipComp = tooltipObject;
+
+            tooltip.tooltip = attack1.tooltipText;
+        }   
         else
         {
             gameObject.transform.GetChild(5).gameObject.SetActive(false);
 
         }
-        if (attack2Name != null)
+        if (attack2 != null)
         {
             gameObject.transform.GetChild(6).gameObject.SetActive(true);
-            gameObject.transform.GetChild(6).GetChild(0).GetComponent<Text>().text = attack2Name;
+            gameObject.transform.GetChild(6).GetChild(0).GetComponent<Text>().text = attack2.attackName;
+            TooltipComponent tooltip = gameObject.transform.GetChild(6).gameObject.GetComponent<TooltipComponent>();
+            tooltip.enabled = true;
+            tooltip.tooltipComp = tooltipObject;
+
+            tooltip.tooltip = attack2.tooltipText;
         }
         else
         {
             gameObject.transform.GetChild(6).gameObject.SetActive(false);
 
         }
-        if (attack3Name != null)
+        if (attack3 != null)
         {
             gameObject.transform.GetChild(7).gameObject.SetActive(true);
-            gameObject.transform.GetChild(7).GetChild(0).GetComponent<Text>().text = attack3Name;
+            gameObject.transform.GetChild(7).GetChild(0).GetComponent<Text>().text = attack3.attackName;
+            TooltipComponent tooltip = gameObject.transform.GetChild(7).gameObject.GetComponent<TooltipComponent>();
+            tooltip.enabled = true;
+            tooltip.tooltipComp = tooltipObject;
+            tooltip.tooltip = attack3.tooltipText;
         }
         else
         {

@@ -90,7 +90,7 @@ public class Unit : MonoBehaviour
         gameObject.GetComponent<SpriteAnimator>().isOutlined = true;
         movementLocations = BoardObject.GetComponent<HighlightMap>().HighlightMovementSquares((int)gameObject.transform.position.x, (int)gameObject.transform.position.y, movementRemaining);
         CharInfoPanel.SetActive(true);
-        CharInfoPanel.GetComponent<CharacterInfoPanel>().UpdateInformation("Unit", charScript.characterName, (int)charScript.charStats.maxHP, charScript.hitPoints, (int)movementRemaining, Attack1.attackName, Attack2.attackName, Attack3.attackName);
+        CharInfoPanel.GetComponent<CharacterInfoPanel>().UpdateInformation("Unit", charScript.characterName, (int)charScript.charStats.maxHP, charScript.hitPoints, (int)movementRemaining, Attack1, Attack2, Attack3);
 
     }
 
@@ -234,42 +234,42 @@ public class Unit : MonoBehaviour
     {
         if (charScript.characterName == "Archer")
         {
-            Attack1 = new Attack(BoardObject, false, "Powershot", 55, 4, new List<string> { "strength", "dexterity" }, "physical", "singleTargetRanged");
-            Attack2 = new Attack(BoardObject, false, "Longshot", 30, 6, new List<string> { "dexterity" }, "physical", "singleTargetRanged");
-            Attack3 = new Attack(BoardObject, false, "Arrow Stab", 20, 1, new List<string> { "strength", "dexterity" }, "physical", "singleTargetMelee");
+            Attack1 = new Attack(BoardObject, false, "Powershot", 55, 4, new List<string> { "strength", "dexterity" }, "physical", "singleTargetRanged", tooltip: "Powerful ranged single-target attack");
+            Attack2 = new Attack(BoardObject, false, "Longshot", 30, 6, new List<string> { "dexterity" }, "physical", "singleTargetRanged", tooltip: "Ranged single-target attack with high range");
+            Attack3 = new Attack(BoardObject, false, "Arrow Stab", 20, 1, new List<string> { "strength", "dexterity" }, "physical", "singleTargetMelee", tooltip: "Weak melee attack");
 
         }
 
         if (charScript.characterName == "Knight")
         {
 
-            Attack1 = new Attack(BoardObject, false, "Eviscerate", 85, 1, new List<string> { "strength" }, "physical", "singleTargetMelee");
-            Attack2 = new Attack(BoardObject, false, "Slash", 40, 1.6f, new List<string> { "strength" }, "physical", "MeleeAOE");
-            Attack3 = new Attack(BoardObject, false, "Javelin", 40, 2, new List<string> { "dexterity" }, "physical", "singleTargetMelee");
+            Attack1 = new Attack(BoardObject, false, "Eviscerate", 85, 1, new List<string> { "strength" }, "physical", "singleTargetMelee", tooltip: "Powerful single-target melee attack");
+            Attack2 = new Attack(BoardObject, false, "Slash", 40, 1.6f, new List<string> { "strength" }, "physical", "MeleeAOE", tooltip: "AOE melee attack");
+            Attack3 = new Attack(BoardObject, false, "Javelin", 40, 2, new List<string> { "dexterity" }, "physical", "singleTargetMelee", tooltip: "Basic ranged attack");
         }
 
         if (charScript.characterName == "Mage")
         {
 
-            Attack1 = new Attack(BoardObject, false, "Lightning", 40, 5, new List<string> { "potency" }, "magic", "RemoteRadiusAOE", AOERadiusArgument: 1);
-            Attack2 = new Attack(BoardObject, false, "Fireball", 50, 4, new List<string> { "potency" }, "magic", "singleTargetRanged");
-            Attack3 = new Attack(BoardObject, false, "Bonk", 15, 1.6f, new List<string> { "strength" }, "physical", "singleTargetMelee");
+            Attack1 = new Attack(BoardObject, false, "Lightning", 40, 5, new List<string> { "potency" }, "magic", "RemoteRadiusAOE", AOERadiusArgument: 1, tooltip: "Ranged AOE magic attack with a cross pattern");
+            Attack2 = new Attack(BoardObject, false, "Fireball", 50, 4, new List<string> { "potency" }, "magic", "singleTargetRanged", tooltip: "Powerful ranged magic single-target attack");
+            Attack3 = new Attack(BoardObject, false, "Bonk", 15, 1.6f, new List<string> { "strength" }, "physical", "singleTargetMelee", tooltip: "Weak melee attack");
 
         }
 
         if (charScript.characterName == "Paladin")
         {
 
-            Attack1 = new Attack(BoardObject, false, "HammerBlast", 35, 0, new List<string> { "strength", "potency" }, "physical", "DirectionalPattern", patternArg: new List<(int x, int y)> { (0, 1), (1, 1), (-1, 1), (0, 2), (0, 3) });
-            Attack2 = new Attack(BoardObject, false, "Bless", 50, 0, new List<string> { "potency" }, "", "DirectionalPattern", patternArg: new List<(int x, int y)> { (0, 1), (0, 2) }, isHealarg: true);
-            Attack3 = new Attack(BoardObject, false, "Pound", 50, 1.6f, new List<string> { "strength" }, "physical", "singleTargetMelee");
+            Attack1 = new Attack(BoardObject, false, "HammerBlast", 35, 0, new List<string> { "strength", "potency" }, "physical", "DirectionalPattern", patternArg: new List<(int x, int y)> { (0, 1), (1, 1), (-1, 1), (0, 2), (0, 3) }, tooltip: "AOE melee attack with pattern");
+            Attack2 = new Attack(BoardObject, false, "Bless", 50, 0, new List<string> { "potency" }, "", "DirectionalPattern", patternArg: new List<(int x, int y)> { (0, 1), (0, 2) }, isHealarg: true, tooltip: "Basic AOE healing power");
+            Attack3 = new Attack(BoardObject, false, "Pound", 50, 1.6f, new List<string> { "strength" }, "physical", "singleTargetMelee", tooltip: "Single-target melee attack");
 
         }
         if (charScript.characterName == "Sorceress")
         {
 
-            Attack1 = new Attack(BoardObject, false, "Arcane Ray", 35, 0, new List<string> { "potency" }, "magic", "DirectionalPattern", patternArg: new List<(int x, int y)> { (0, 1), (0, 2), (0, 3), (0, 4) });
-            Attack2 = new Attack(BoardObject, false, "Overwhelm", 50, 2.5f, new List<string> { "potency" }, "magic", "MeleeAOE");
+            Attack1 = new Attack(BoardObject, false, "Arcane Ray", 35, 0, new List<string> { "potency" }, "magic", "DirectionalPattern", patternArg: new List<(int x, int y)> { (0, 1), (0, 2), (0, 3), (0, 4) }, tooltip: "AOE magic attack with a line pattern");
+            Attack2 = new Attack(BoardObject, false, "Overwhelm", 50, 2.5f, new List<string> { "potency" }, "magic", "MeleeAOE", tooltip: "Powerful AOE magic attack");
             Attack3 = new Attack(BoardObject, false, "placeholder", 50, 1.6f, new List<string> { "strength" }, "physical", "singleTargetMelee");
 
         }
@@ -278,6 +278,6 @@ public class Unit : MonoBehaviour
 
 
 
-
+ 
 
 }

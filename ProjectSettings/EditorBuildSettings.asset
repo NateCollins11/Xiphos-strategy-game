@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: d42b256f7801940c19c68601b3033f08
   - enabled: 1
+    path: Assets/Scenes/Options.unity
+    guid: 828f3b434e7b04d6181de4616e17fa8c
+  - enabled: 1
     path: Assets/Scenes/PartyManagement.unity
     guid: 6891f9429e9df4943b28bb3cef8c96b6
   - enabled: 1

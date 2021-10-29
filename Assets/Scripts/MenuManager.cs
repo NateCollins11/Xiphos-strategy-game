@@ -27,7 +27,7 @@ public class MenuManager : MonoBehaviour
 
     public void Options()
     {
-
+        StartCoroutine(levelLoader.LoadNextScene("Options"));
 
     }
 }
